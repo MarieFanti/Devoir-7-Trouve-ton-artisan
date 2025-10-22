@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { getMenuCategories } from "../services/api";
 import { Link, useNavigate } from "react-router-dom";
-import { Container, Nav, Navbar, Form, Button, Spinner } from "react-bootstrap";
+import { Navbar, Nav, Form, Container, Spinner } from "react-bootstrap";
+import { FaSearch } from "react-icons/fa"
 import logo from "../assets/Logo.png";
-
-
 
 const Header = () => {
     const [categories, setCategories] = useState([]);
@@ -16,7 +15,6 @@ const Header = () => {
         const fetchCategories = async () => {
             try {
                 const res = await getMenuCategories();
-                // Vérifie que la réponse est un tableau
                 if (Array.isArray(res.data)) {
                     setCategories(res.data.map(item => item.categorie));
                 } else {
@@ -28,7 +26,6 @@ const Header = () => {
                 setLoading(false);
             }
         };
-
         fetchCategories();
     }, []);
 
@@ -40,51 +37,68 @@ const Header = () => {
     };
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="mb-3">
-            <Container>
-                <Navbar.Brand as={Link} to="/">
-                    <img
-                        src={logo}
-                        alt="Trouver mon artisan"
-                        height="40"
-                        className="d-inline-block align-top"
-                    />
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto">
-                        {loading ? (
-                            <Spinner animation="border" size="sm" />
-                        ) : categories.length > 0 ? (
-                            categories.map((cat, idx) => (
-                                <Nav.Link
-                                    key={idx}
-                                    as={Link}
-                                    to={`/artisans?category=${encodeURIComponent(cat)}`}
-                                >
-                                    {cat}
-                                </Nav.Link>
-                            ))
-                        ) : (
-                            <span className="text-muted">Pas de catégories</span>
-                        )}
-                    </Nav>
+        <header>
+            <Navbar expand="lg" className="mb-3">
+                <Container fluid className="d-flex align-items-center justify-content-between">
+                    <Navbar.Brand as={Link} to="/" className="d-flex align-items-center me-3">
+                        <img src={logo} alt="Trouver mon artisan" height="100" />
+                    </Navbar.Brand>
 
-                    <Form className="d-flex" onSubmit={handleSearch}>
+                    <Form
+                        className="flex-grow-1 ms-4 position-relative"
+                        onSubmit={handleSearch}
+                    >
                         <Form.Control
                             type="search"
                             placeholder="Rechercher un artisan"
-                            className="me-2"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter") handleSearch(e);
+                            }}
+                            style={{
+                                borderRadius: "20px",
+                                paddingRight: "40px",
+                            }}
                         />
-                        <Button variant="outline-primary" type="submit">
-                            Rechercher
-                        </Button>
+                        <FaSearch
+                            style={{
+                                position: "absolute",
+                                right: "15px",
+                                top: "50%",
+                                transform: "translateY(-50%)",
+                                color: "#aaa",
+                                cursor: "pointer",
+                            }}
+                            onClick={handleSearch}
+                        />
                     </Form>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-around">
+                        <Nav className="d-flex flex-wrap">
+                            {loading ? (
+                                <Spinner animation="border" size="sm" />
+                            ) : categories.length > 0 ? (
+                                categories.map((cat, idx) => (
+                                    <Nav.Link
+                                        key={idx}
+                                        as={Link}
+                                        to={`/artisans?category=${encodeURIComponent(cat)}`}
+                                        className="graph-h3 m-1"
+                                    >
+                                        {cat}
+                                    </Nav.Link>
+                                ))
+                            ) : (
+                                <span className="text-muted">Pas de catégories</span>
+                            )}
+                        </Nav>
+                    </Navbar.Collapse>
+
+                </Container>
+            </Navbar>
+        </header>
     );
 };
 
