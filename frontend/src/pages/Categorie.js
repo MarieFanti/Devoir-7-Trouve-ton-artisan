@@ -8,7 +8,7 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-const Artisans = () => {
+const Categorie = () => {
   const [artisans, setArtisans] = useState([]);
   const [loading, setLoading] = useState(true);
   const query = useQuery();
@@ -47,7 +47,7 @@ const Artisans = () => {
   }
 
   return (
-    <Container className="my-5 d-flex flex-column align-items-center">
+    <Container className="my-5 d-flex flex-column align-items-center justify-content-center">
      <h1 className={`hero-title p-3 text-center ${category ? category.toLowerCase() : ""}`}>
   {title}</h1>
   <h3 className="p-3">2. Je choisis mon artisan</h3>
@@ -60,9 +60,16 @@ const Artisans = () => {
       ) : artisans.length === 0 ? (
         <p>Aucun artisan trouvé.</p>
       ) : (
-        <Row xs={1} sm={2} md={3} lg={4} className="g-4 mt-3">
+        <Row
+  xs={1}
+  sm={2}
+  md={3}
+  lg={4}
+  className="g-4 mt-3 justify-content-center align-items-center"
+  style={{ width: "100%" }}
+>
           {artisans.map(a => (
-            <Col key={a.id}>
+            <Col key={a.id} className="d-flex justify-content-center" >
               <CardArtisan artisan={a} />
             </Col>
           ))}
@@ -72,4 +79,4 @@ const Artisans = () => {
   );
 };
 
-export default Artisans;
+export default Categorie;

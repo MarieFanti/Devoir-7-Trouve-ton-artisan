@@ -38,7 +38,7 @@ const Header = () => {
 
     return (
         <header>
-            <Navbar expand="lg" className="mb-3">
+            <Navbar expand="lg">
                 <Container fluid className="d-flex align-items-center justify-content-between">
                     <Navbar.Brand as={Link} to="/" className="d-flex align-items-center me-3">
                         <img src={logo} alt="Trouver mon artisan" height="100" />
@@ -85,7 +85,7 @@ const Header = () => {
                                         key={idx}
                                         as={Link}
                                         to={`/artisans?category=${encodeURIComponent(cat)}`}
-                                        className="graph-h3 m-1"
+                                        className="header-title m-1"
                                     >
                                         {cat}
                                     </Nav.Link>
@@ -93,6 +93,7 @@ const Header = () => {
                             ) : (
                                 <span className="text-muted">Pas de catégories</span>
                             )}
+                            <Nav.Link as={Link} to="/artisans/tous" className="m-1 header-title">Tous les artisans </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
 
