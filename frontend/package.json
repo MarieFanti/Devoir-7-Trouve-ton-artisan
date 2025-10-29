@@ -15,6 +15,7 @@
     "react": "^19.2.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.2.0",
+    "react-helmet": "^6.1.0",
     "react-icons": "^5.5.0",
     "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^6.30.1",
@@ -25,6 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "react-snap",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -44,6 +46,16 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "react-snap": "^1.23.0"
+  },
+  "reactSnap": {
+    "crawl": true,
+    "inlineCss": true,
+    "puppeteerArgs": [
+      "--no-sandbox"
     ]
   }
 }

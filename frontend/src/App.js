@@ -16,8 +16,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/artisans" element={<Categorie />} /> {/* Page filtrée par catégorie */}
-        <Route path="/artisans/tous" element={<AllArtisans />} /> {/* Tous les artisans */}
+         <Route path="/categorie/:nom" element={<Categorie />} />
+        <Route path="/artisans/tous" element={<AllArtisans />} /> 
         <Route path="/artisans/:id" element={<FicheArtisan />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

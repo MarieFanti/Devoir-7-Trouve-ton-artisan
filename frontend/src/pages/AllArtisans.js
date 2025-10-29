@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet"; 
 import { Accordion, Spinner, Container, Row, Col } from "react-bootstrap";
 import { getArtisansByCategory } from "../services/api";
 import CardArtisan from "../components/CardArtisan";
 
 const AllArtisans = () => {
+   // --- État pour stocker les artisans par catégorie ---
   const [categoriesData, setCategoriesData] = useState({
     alimentation: [],
     batiment: [],
@@ -40,6 +42,12 @@ const AllArtisans = () => {
 
   return (
     <Container className="all-artisans-container my-5 d-flex flex-column align-items-center">
+       <Helmet>
+        <title>Liste des artisans par catégorie - MonSite</title>
+        <meta name="description" content="Découvrez tous nos artisans classés par catégorie : Alimentation, Bâtiment, Fabrication, Services."
+        />
+      </Helmet>
+          {/* --- En-tête de la page --- */}
       <div className="d-flex flex-column align-items-center justify-content-start">
         <h1 className="hero-title p-3  text-center">Les catégories d’artisanat</h1>
         <h3 className="hero-steps p-3">
@@ -52,6 +60,7 @@ const AllArtisans = () => {
           <Spinner animation="border" />
         </div>
       ) : (
+        // --- Accordéon pour chaque catégorie ---
         <Accordion defaultActiveKey="0" alwaysOpen>
             
           {/* Alimentation */}
