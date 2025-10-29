@@ -24,6 +24,22 @@ header {
 
 }
 
+footer.footer-style {
+  background-color: #0074C7;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+  footer .lien {
+  color: #ffffff;              
+  text-decoration: none;       
+}
+
+footer .lien:hover:hover {
+  color: #F1F8FC;          
+  opacity: 0.85;
+}
+
 .graph-h3 {
   font-size: 20px;
   font-weight: bold;
