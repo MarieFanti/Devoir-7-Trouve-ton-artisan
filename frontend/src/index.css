@@ -37,7 +37,7 @@ h3{
 /*************************************************composants*************************************************************/
 header {
   background-color: #F1F8FC;
-
+text-transform: capitalize;
 }
 
 footer {
@@ -132,7 +132,7 @@ footer .lien:hover {
 }
 
 .hero-title {
-  max-width: 262px;
+  max-width: 300px;
   line-height: 2rem;
   color: #00497C;
 }
