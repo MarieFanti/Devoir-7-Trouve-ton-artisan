@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArtisanById, contactArtisan } from "../services/api";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import ReactStars from "react-stars";
 import artisanImage from '../assets/artisan.png';
 
 const FicheArtisan = () => {
@@ -40,26 +41,41 @@ const FicheArtisan = () => {
 
   if (!artisan) return <p>Chargement...</p>;
 
+  let note = Number(artisan.note);
+  if (isNaN(note)) note = 0;
+  note = Math.max(0, Math.min(5, note));
+
   return (
     <Container className="fiche-container">
       <Row className="justify-content-center g-4">
         {/* Carte artisan */}
         <Col md={6} lg={5}>
-          <Card className="artisan-card h-100">
-            <img src={artisan.image ? artisan.image : artisanImage} alt={artisan.nom} className="card-artisan-img2" />
+          <Card className="artisan-card h-100 p-3">
+            <img
+              src={artisan.image ? artisan.image : artisanImage}
+              alt={artisan.nom}
+              className="card-artisan-img2"
+            />
             <h3 className="artisan-name">{artisan.nom}</h3>
             <p className="artisan-specialty">{artisan.specialites}</p>
 
-            <div className="artisan-location">
+            <div className="artisan-location d-flex align-items-center gap-2">
               <FontAwesomeIcon icon={faMapMarkerAlt} />
               <span>{artisan.ville}</span>
             </div>
 
-            <div className="artisan-rating">
-              {Array.from({ length: Math.floor(artisan.note) }).map((_, i) => (
-                <FontAwesomeIcon key={i} icon={faStar} color="#82B864" />
-              ))}
-              <span>{artisan.note}</span>
+            {/* Étoiles avec demi-étoiles */}
+            <div className="artisan-rating mt-2 d-flex align-items-center gap-2">
+              <ReactStars
+                count={5}
+                value={note}
+                size={24}
+                edit={false}
+                half={true}
+                color1="#ccc"
+                color2="#82B864"
+              />
+              <span className="fw-bold">{note.toFixed(1)}</span>
             </div>
 
             <hr style={{ width: "100%", borderColor: "#00497C" }} />
@@ -67,7 +83,12 @@ const FicheArtisan = () => {
             <div className="artisan-about">{artisan.propos}</div>
 
             {artisan.site_web && (
-              <a href={artisan.site_web} target="_blank" rel="noreferrer" className="artisan-site">
+              <a
+                href={artisan.site_web}
+                target="_blank"
+                rel="noreferrer"
+                className="artisan-site"
+              >
                 {artisan.site_web}
               </a>
             )}
