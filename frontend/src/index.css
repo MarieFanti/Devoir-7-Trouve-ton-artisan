@@ -12,22 +12,42 @@
   font-family: 'Graphik', sans-serif;
 }
 
-/* Body */
 body {
   background-color: #FFFFFF;
   color: #333;
   line-height: 1.6;
+  font-size: 1rem
 }
 
+
+h1{
+  font-weight: bolder;
+  font-size: 2rem; 
+}
+
+h2{
+  font-size: 1.5rem;
+}
+
+h3{
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/*************************************************composants*************************************************************/
 header {
   background-color: #F1F8FC;
 
 }
 
-footer.footer-style {
+footer {
   background-color: #0074C7;
   color: #FFFFFF;
   text-decoration: none;
+   padding: 1rem 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.75rem;
 }
 
   footer .lien {
@@ -35,61 +55,117 @@ footer.footer-style {
   text-decoration: none;       
 }
 
-footer .lien:hover:hover {
+footer .lien:hover {
   color: #F1F8FC;          
   opacity: 0.85;
 }
-
-.graph-h3 {
-  font-size: 20px;
-  font-weight: bold;
-  text-transform: capitalize;
-}
-
-.graph-h2 {
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.graph-h1 {
-  font-size: 32px;
-  font-weight: 700;
-
-}
-
-/* Cards Artisan */
 .card-artisan {
-  background-color: #fff;
+  width: 100%; 
+  max-width: 265px;
+  height: 250px;
+  padding: 25px 24px;
+  background: #F1F8FC;
   border-radius: 8px;
-  padding: 1rem;
-  margin: 1rem 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  outline: 1px #0074C7 solid;
+  outline-offset: -1px;
+  display: flex;
+  flex-direction: column;
+   justify-content: flex-start; 
+  align-items: center;
+  gap: 10px;
   text-decoration: none;
-  color: #333;
-  display: block;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #384050;
+  transition: transform 0.3s ease-in-out;
 }
 
-.card-artisan:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.card-artisan:hover{
+  background-color: #e6f2fb;
+  transform: scale(1.05); 
+   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
 }
 
-/* Footer */
-footer {
-  background-color: #222;
-  color: #fff;
-  padding: 1rem 2rem;
-  text-align: center;
-  margin-top: 2rem;
+.card-artisan-img-wrapper {
+  width: 78px !important;
+  height: 57px !important;
+  flex: none; 
+  overflow: hidden;
+  border-radius: 9999px;
+  display: block; 
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-
-
-  .top-artisans {
-    display: flex;
-    flex-direction: column;
-  }
+.card-artisan-img {
+   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block; 
 }
+
+.card-artisan-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.artisan-location {
+  width: 201px;
+  height: 48px;
+  padding: 0 60px;
+  color: #0074C7;
+}
+
+.location-icon {
+  background: #0074C7;
+}
+
+.star {
+  color :#82B864; 
+}
+
+
+
+/****************************************************************page d'accueil***************************************************/
+
+.hero-section {
+  height: auto; 
+  overflow: hidden;
+}
+
+.hero-title {
+  max-width: 262px;
+  line-height: 2rem;
+  color: #00497C;
+}
+.hero-steps {
+  max-width: 253px;
+  font-weight: 700;
+   line-height: 1.5rem;
+  color: #384050;
+  text-align: center; 
+  list-style-position: inside;
+}
+
+.artisans-section {
+  min-height: 463px;
+  gap: 41px;
+  padding: 5rem 2rem; /* padding vertical et horizontal */
+  overflow: hidden;
+}
+
+.separator {
+  width: 255px;
+  border-top: 1px solid #0074C7;
+}
+
+.artisans-title {
+  font-family: 'Graphik Compact Trial', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem; /* 24px */
+  line-height: 1.5rem;
+  color: #00497C;
+}
+
+.top-artisans {
+  max-width: 100%;
+}
+

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="footer-style mt-5 border-top">
+    <footer className="mt-5 border-top">
       <Container>
         <Row className="align-items-start justify-content-center justify-content-md-between pt-2 gap-4 text-center text-md-start">
           <Col xs={12} md={3} className="pt-5">
