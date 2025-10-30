@@ -77,7 +77,7 @@ L’objectif est de permettre aux **particuliers** de rechercher un artisan par 
 git clone https://github.com/MarieFanti/Devoir-Trouve-ton-artisan
 cd trouver-mon-artisan
 
-2️⃣ Configuration du backend
+- Configuration du backend
 cd backend
 npm install
 
